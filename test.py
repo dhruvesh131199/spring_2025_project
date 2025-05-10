@@ -1,6 +1,16 @@
 import pandas as pd 
 import yfinance as yf 
 
-data = yf.download("AAPL", start = "2025-01-01", end = "2025-05-01", auto_adjust = False)
+scripts = ["AAPL", "GOOG", "NVIDIA"]
 
-print(data.head())
+all_data = []
+
+for symbol in self.symbols:
+	print("fetching the data for ",symbol)
+	stock_data = yf.download(symbol, start = "2025-01-01", end = "2025-05-01")
+	stock_data.reset_index(inplace=True)
+	stock_data["stock_symbol"] = symbol
+	stock_data.columns = ["date", "close", "high", "low", "open", "volume", "symbol"]
+	all_data.append(stock_data)
+
+all_data.to_csv("stock_data.csv")
