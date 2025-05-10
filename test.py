@@ -1,11 +1,11 @@
 import pandas as pd 
 import yfinance as yf 
 
-scripts = ["AAPL", "GOOG", "NVIDIA"]
+symbols = ["AAPL", "GOOG", "NVIDIA"]
 
 all_data = []
 
-for symbol in self.symbols:
+for symbol in symbols:
 	print("fetching the data for ",symbol)
 	stock_data = yf.download(symbol, start = "2025-01-01", end = "2025-05-01")
 	stock_data.reset_index(inplace=True)
