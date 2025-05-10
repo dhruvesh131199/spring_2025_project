@@ -14,4 +14,5 @@ for symbol in symbols:
 	stock_data.columns = ["date", "close", "high", "low", "open", "volume", "symbol"]
 	all_data.append(stock_data)
 
-all_data.to_csv("stock_data.csv")
+final_df = pd.concat(all_data, ignore_index=True)
+final_df.to_csv("stock_data.csv", index=False)
